@@ -27,9 +27,9 @@ def str_add(str1, str2):
 @allure.issue("BUG号：123")                 # 问题表识，关联标识已有的问题，可为一个url链接地址
 @allure.testcase("用例名：测试字符串相等")     # 用例标识，关联标识用例，可为一个url链接地址
 @pytest.mark.parametrize("para_one, para_two",              # 用例参数
-                         [("hello world", "hello world"),   # 用例参数的参数化数据
-                          (4, 4),
-                          ("中文", "中文")],
+                         [("hello world", "hello world1"),   # 用例参数的参数化数据
+                          (4, 41),
+                          ("中文", "中文1")],
                          ids=["test ASCII string",          # 对应用例参数化数据的用例名
                               "test digital string",
                               "test unicode string"])
@@ -44,7 +44,7 @@ def test_case_example(para_one, para_two):
     # 报告中的环境参数，可用于必要环境参数的说明，相同的参数以后者为准
     allure.environment(host="172.6.12.27", test_vars=paras)
     # 关联的资料信息, 可在报告中记录保存必要的相关信息
-    allure.attach("用例参数", "{0}".format(paras))
+    allure.attach("用例参数", "{0}".format(paras))  # format函数依次填充参数
     # 调用测试函数
     res = str_add(para_one, para_two)
     # 对必要的测试中间结果数据做备份

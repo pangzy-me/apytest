@@ -88,10 +88,16 @@ def test_case_01():
 @allure.feature('功能模块module_01')
 @allure.story('模块module_01下子功能story02')
 @allure.severity('critical')
-def test_case_02():
+@pytest.mark.parametrize("text", ["aaa", "bbb"], ids=["01_02_first", "01_02_second"])
+# 为不同的测试数据建立ID来区分不同的case，这个是经常使用的变量参数化。
+# @pytest.mark.parametrize()的括号中的顺序，(变量名称，对应的(参数化元组)的数组，ID的数组)
+# 这样很好的解决了代码重复编写，减少了维护，可以很好的实现数据与代码想分离。
+# 该装饰器的作用：数组中有几组变量，就循环执行几次用例。
+def test_case_02(text):
     """
     用例描述：此段为测试用例的描述
     """
+    print(text)
     assert 0 == 0
 
 
