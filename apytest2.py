@@ -13,6 +13,7 @@ https://blog.csdn.net/lihua_tan/article/details/76099282
 @allure.step("字符串相加：{0}，{1}")     # 测试步骤，可通过format机制自动获取函数参数
 def str_add(str1, str2):
     print('hello')
+    # isinstance是Python中的一个内建函数。是用来判断一个对象的变量类型。如：isinstance(1, int) 返回True
     if not isinstance(str1, str):
         return "%s is not a string" % str1
     if not isinstance(str2, str):
@@ -22,9 +23,9 @@ def str_add(str1, str2):
 
 @allure.severity("critical")               # 优先级，包含blocker, critical, normal, minor, trivial 几个不同的等级
 @allure.feature("测试模块_demo1")           # 功能块，feature功能分块时比story大,即同时存在feature和story时,feature为父节点
-@allure.story("测试模块_demo1_demo2")             # 功能块，具有相同feature或story的用例将规整到相同模块下,执行时可用于筛选
+@allure.story("测试模块_demo1_demo2")       # 功能块，具有相同feature或story的用例将规整到相同模块下,执行时可用于筛选
 @allure.issue("BUG号：123")                 # 问题表识，关联标识已有的问题，可为一个url链接地址
-@allure.testcase("用例名：测试字符串相等")      # 用例标识，关联标识用例，可为一个url链接地址
+@allure.testcase("用例名：测试字符串相等")     # 用例标识，关联标识用例，可为一个url链接地址
 @pytest.mark.parametrize("para_one, para_two",              # 用例参数
                          [("hello world", "hello world"),   # 用例参数的参数化数据
                           (4, 4),
@@ -49,7 +50,7 @@ def test_case_example(para_one, para_two):
     # 对必要的测试中间结果数据做备份
     allure.attach("str_add返回结果", "{0}".format(res))
     # 测试步骤，对必要的测试过程加以说明
-    with pytest.allure.step("测试步骤2，结果校验 {0} == {1}".format(res, para_one+para_two)):
+    with allure.step("测试步骤2，结果校验 {0} == {1}".format(res, para_one+para_two)):
         assert res == para_one+para_two, res
 
 
