@@ -77,6 +77,7 @@ def test_case_01():
     with allure.step("第二步：点击商品"):  # 将一个测试用例分成几个步骤，将步骤打印到测试报告中
         file = open('./藏狐.jpg', 'rb').read()    # attach向测试报告中输入图片附件信息
         allure.attach('test_img', file, allure.attach_type.JPG)
+        allure.attach('test_img', file, allure.attach_type.JPG)
         pass
     with allure.step("第三步：校验结果"):
         allure.attach('期望结果', '添加商品列表成功')
