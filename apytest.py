@@ -93,6 +93,15 @@ def test_case_01():
 # @pytest.mark.parametrize()的括号中的顺序，(变量名称，对应的(参数化元组)的数组，ID的数组)
 # 这样很好的解决了代码重复编写，减少了维护，可以很好的实现数据与代码想分离。
 # 该装饰器的作用：数组中有几组变量，就循环执行几次用例。
+@pytest.mark.runtestcase02
+@pytest.mark.runtestcase0202
+# pytest支持自定义标记，可以把一个项目划分多个模块，然后指定模块名称执行。cmd运行的时候，加个 -m 参数
+# 自定义mark标记：runtestcase02
+# >pytest apytest.py -s -q --alluredir ./report/xml -m="runtestcase02"
+# >pytest apytest.py -s -q --alluredir ./report/xml -m="not runtestcase02"
+# 自定义mark标记：runtestcase0202
+# >pytest apytest.py -s -q --alluredir ./report/xml -m="runtestcase0202"
+# >pytest apytest.py -s -q --alluredir ./report/xml -m="not runtestcase0202"
 def test_case_02(text):
     """
     用例描述：此段为测试用例的描述
