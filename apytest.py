@@ -1,6 +1,7 @@
 import allure
 import pytest
 
+
 '''使用pytest+allure实现美观的测试报告
 
 安装步骤：
@@ -13,6 +14,7 @@ import pytest
     4. 使用allure生成测试报告步骤：
       4.1 > pytest apytest.py -s -q --alluredir ./report/xml
       4.2 > allure generate ./report/xml -o ./report/html
+          > allure generate --clean ./report/xml -o ./report/html   #./report/html若存在先--clean
         也可以使用allure-commandline生成html测试报告，个人感觉没有allure生成的好用，包括图表和中文支持。
       4.3 D:\Program Files\allure-commandline\bin> allure generate 已生成的xml路径 -o 待生成的html路径
     5. 参考博客文章：
@@ -55,7 +57,7 @@ attach定制详解：
 
 @allure.feature('功能模块module_01')
 @allure.story('模块module_01下子功能story01')
-@allure.severity('critical')
+@allure.severity('blocker')
 # @allure.step('测试步骤一：')
 @allure.issue('BUG编号：89757')
 @allure.testcase('用例名称：主模块1')
@@ -111,7 +113,7 @@ def test_case_02(text):
 
 
 @allure.feature('功能模块module_02')
-@allure.severity('minor')
+@allure.severity('normal')
 def test_case_03():
     """
     用例描述：此段为测试用例的描述
