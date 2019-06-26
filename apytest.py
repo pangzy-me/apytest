@@ -108,6 +108,7 @@ def test_case_01():
 # >pytest apytest.py -s -q --alluredir ./report/xml -m="not r01"
 # 不执行标记多条用例
 # >pytest apytest.py -s -q --alluredir ./report/xml -m="not r01 and not r02"
+## 参考文档 https://testerhome.com/topics/19327/show_wechat
 
 # 自定义mark标记：r0101，可以同样使用该标记
 # >pytest apytest.py -s -q --alluredir ./report/xml -m="r0101"
