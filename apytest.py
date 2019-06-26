@@ -95,15 +95,23 @@ def test_case_01():
 # @pytest.mark.parametrize()的括号中的顺序，(变量名称，对应的(参数化元组)的数组，ID的数组)
 # 这样很好的解决了代码重复编写，减少了维护，可以很好的实现数据与代码想分离。
 # 该装饰器的作用：数组中有几组变量，就循环执行几次用例。
-@pytest.mark.runtestcase02
-@pytest.mark.runtestcase0202
+@pytest.mark.r01
+@pytest.mark.r0101
 # pytest支持自定义标记，可以把一个项目划分多个模块，然后指定模块名称执行。cmd运行的时候，加个 -m 参数
-# 自定义mark标记：runtestcase02
-# >pytest apytest.py -s -q --alluredir ./report/xml -m="runtestcase02"
-# >pytest apytest.py -s -q --alluredir ./report/xml -m="not runtestcase02"
-# 自定义mark标记：runtestcase0202
-# >pytest apytest.py -s -q --alluredir ./report/xml -m="runtestcase0202"
-# >pytest apytest.py -s -q --alluredir ./report/xml -m="not runtestcase0202"
+# 自定义mark标记：r01
+# 执行标记一条用例：
+# >pytest apytest.py -s -q --alluredir ./report/xml -m="r01"
+# 执行标记多条用例：
+# >pytest apytest.py -s -q --alluredir ./report/xml -m="r01 or r02 or r03"
+#
+# 不执行标记一条用例
+# >pytest apytest.py -s -q --alluredir ./report/xml -m="not r01"
+# 不执行标记多条用例
+# >pytest apytest.py -s -q --alluredir ./report/xml -m="not r01 and not r02"
+
+# 自定义mark标记：r0101，可以同样使用该标记
+# >pytest apytest.py -s -q --alluredir ./report/xml -m="r0101"
+# >pytest apytest.py -s -q --alluredir ./report/xml -m="not r0101"
 def test_case_02(text):
     """
     用例描述：此段为测试用例的描述
@@ -114,6 +122,7 @@ def test_case_02(text):
 
 @allure.feature('功能模块module_02')
 @allure.severity('normal')
+@pytest.mark.r02
 def test_case_03():
     """
     用例描述：此段为测试用例的描述
@@ -123,6 +132,7 @@ def test_case_03():
 
 @allure.feature('功能模块module_03')
 @allure.severity('minor')
+@pytest.mark.r03
 def test_case_04():
     """
     用例描述：此段为测试用例的描述
