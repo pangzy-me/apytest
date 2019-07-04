@@ -12,10 +12,31 @@ import pytest
     3. allure-commandline离线安装包，可不装，直接使用allure生成html测试报告
         https://github.com/allure-framework/allure1/releases/download/allure-core-1.5.2/allure-commandline.zip
     4. 使用allure生成测试报告步骤：
+            -s和-q是减少屏幕输出用的，可以不加
+            --alluredir后面跟的是报告的路径名字
       4.1 > pytest apytest.py -s -q --alluredir ./report/xml
       4.2 > allure generate ./report/xml -o ./report/html
           > allure generate --clean ./report/xml -o ./report/html   #./report/html若存在先--clean
         也可以使用allure-commandline生成html测试报告，个人感觉没有allure生成的好用，包括图表和中文支持。
+      
+      >>> 其中4.2 报错如下，原因是本机使用的jdk是1.7，版本太低，改成1.8正常。
+          >allure generate ./report/xml -o  ./report/html
+        Exception in thread "main" java.lang.UnsupportedClassVersionError: 
+        io/qameta/allure/CommandLine : Unsupported major.minor version 52.0
+            at java.lang.ClassLoader.defineClass1(Native Method)
+            at java.lang.ClassLoader.defineClass(ClassLoader.java:800)
+            at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+            at java.net.URLClassLoader.defineClass(URLClassLoader.java:449)
+            at java.net.URLClassLoader.access$100(URLClassLoader.java:71)
+            at java.net.URLClassLoader$1.run(URLClassLoader.java:361)
+            at java.net.URLClassLoader$1.run(URLClassLoader.java:355)
+            at java.security.AccessController.doPrivileged(Native Method)
+            at java.net.URLClassLoader.findClass(URLClassLoader.java:354)
+            at java.lang.ClassLoader.loadClass(ClassLoader.java:425)
+            at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:308)
+            at java.lang.ClassLoader.loadClass(ClassLoader.java:358)
+            at sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:482)
+      
       4.3 D:\Program Files\allure-commandline\bin> allure generate 已生成的xml路径 -o 待生成的html路径
     5. 参考博客文章：
         https://www.cnblogs.com/hao2018/p/9915044.html
