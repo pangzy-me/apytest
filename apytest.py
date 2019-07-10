@@ -9,6 +9,7 @@ import pytest
         https://github.com/allure-framework/allure2/releases
     2. 安装pytest-allure-adaptor。会连带安装pytest(建议自行安装pytest-3.10.x版本，与allure-2.8.1适用)
         pip install pytest-allure-adaptor
+        # pip --default-time=100 install pytest-allure-adaptor 若安装超时，可以尝试此方法
     3. allure-commandline离线安装包，可不装，直接使用allure生成html测试报告
         https://github.com/allure-framework/allure1/releases/download/allure-core-1.5.2/allure-commandline.zip
     4. 使用allure生成测试报告步骤：
