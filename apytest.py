@@ -15,11 +15,12 @@ import pytest
     4. 使用allure生成测试报告步骤：
             -s和-q是减少屏幕输出用的，可以不加
             --alluredir后面跟的是报告的路径名字
+        执行单个文件生成测试报告
       4.1 > pytest apytest.py -s -q --alluredir ./report/xml
       4.2 > allure generate ./report/xml -o ./report/html
           > allure generate --clean ./report/xml -o ./report/html   #./report/html若存在先--clean
         也可以使用allure-commandline生成html测试报告，个人感觉没有allure生成的好用，包括图表和中文支持。
-      
+
       >>> 其中4.2 报错如下，原因是本机使用的jdk是1.7，版本太低，改成1.8正常。
           >allure generate ./report/xml -o  ./report/html
         Exception in thread "main" java.lang.UnsupportedClassVersionError: 
@@ -39,10 +40,26 @@ import pytest
             at sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:482)
       
       4.3 D:\Program Files\allure-commandline\bin> allure generate 已生成的xml路径 -o 待生成的html路径
-    5. 参考博客文章：
+    
+    5. 执行所有测试用例文件(以 _test 结尾文件,或以 test_ 开头)：
+        如测试文件：
+            apytest1_test.py
+            apytest2_test.py
+            apytest3_test.py
+        a.执行命名：
+            pytest --alluredir report           # 会在.py文件同级目录下生成report文件夹
+            allure generate report              # 会在.py文件同级目录下生成allure-report文件夹
+            # allure generate report --clean    # 覆盖生成报告
+
+        b.执行命名：
+            pytest --alluredir report/xml               # 指定路径下生成 report/xml 文件夹
+            allure generate report/xml -o report/html   # 指定路径下生成 report/html 文件夹
+               
+    6. 参考博客文章：
         https://www.cnblogs.com/hao2018/p/9915044.html
         https://www.cnblogs.com/xiaoxi-3-/p/9492534.html
         https://www.cnblogs.com/yrxns/p/8386267.html
+        https://www.icode9.com/content-4-398780.html
 
 定制测试报告参数说明：
     @allure.feature     # 用于定义被测试的功能，被测产品的需求点
