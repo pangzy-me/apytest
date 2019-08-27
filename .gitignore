@@ -1,0 +1,8 @@
+## ignore 文件 https://blog.csdn.net/luhuibo318/article/details/89742169
+
+.idea
+__pycache__
+
+**/.pytest_cache/
+**/allure-report/
+**/report/
