@@ -7,6 +7,7 @@ import pytest
 安装步骤：
     1. 安装allure，离线下载安装包，xxx/bin添加环境变量。(也可安装Windows PowerShell、Scoop在线安装allure)
         https://github.com/allure-framework/allure2/releases
+        -- 其中 Source code(zip) 为allure包，页面中 Download 则下载的是allure-commandline-2.xx.x.zip 包
     2. 安装pytest-allure-adaptor。会连带安装pytest(建议自行安装pytest-3.10.x版本，与allure-2.8.1适用)
         pip install pytest-allure-adaptor
         # pip --default-time=100 install pytest-allure-adaptor 若安装超时，可以尝试此方法
